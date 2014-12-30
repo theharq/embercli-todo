@@ -18,5 +18,13 @@ export default Ember.ArrayController.extend({
 
   remaining: function(){
     return this.filterBy('isCompleted', false).get('length');
-  }.property("@each.isCompleted")
+  }.property("@each.isCompleted"),
+
+  hasCompleted: function(){
+    return this.get('completed') > 0;
+  }.property('completed'),
+
+  completed: function(){
+    return this.filterBy('isCompleted', true).get('length');
+  }.property('@each.isCompleted')
 });
