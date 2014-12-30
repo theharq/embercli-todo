@@ -14,5 +14,9 @@ export default Ember.ArrayController.extend({
       this.set("newTitle", "");
       todo.save();
     }
-  }
+  },
+
+  remaining: function(){
+    return this.filterBy('isCompleted', false).get('length');
+  }.property("@each.isCompleted")
 });
